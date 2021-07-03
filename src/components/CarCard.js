@@ -1,15 +1,16 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CarCard = () => {
     return (
-        <Container>
+        <Container to={`/car`}>
             <DateContainer>
                 <div>
                     02.07.2021
                 </div>
-                <LikeButton>
+                <LikeImage>
                     <i class="far fa-heart"></i>
-                </LikeButton>
+                </LikeImage>
             </DateContainer>
             <Image src="https://g1-bg.cars.bg/2021-01-30_2/60159a1fd9e18c11211fbd03o.jpg" alt="car" />
             <Price>10.500лв.</Price>
@@ -23,7 +24,9 @@ const CarCard = () => {
 
 export default CarCard;
 
-const Container = styled.div`   
+const Container = styled(Link)`
+    color: inherit;
+    text-decoration: none;
     width: 19vw;
     height: 47vh;
     border: 2px solid #DEDEDE;
@@ -50,7 +53,7 @@ const DateContainer = styled.div`
     color: #4E4E4E;
 `;
 
-const LikeButton = styled.div`
+const LikeImage = styled.div`
     font-size: 20px;
 `;
 

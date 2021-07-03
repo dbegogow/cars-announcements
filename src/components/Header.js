@@ -29,6 +29,7 @@ const Nav = styled.nav`
     top: 0;
     left: 0;
     right: 0;
+    z-index: 1;
     height: 70px;
     background: #22A1E2;
     color: #FFF;
