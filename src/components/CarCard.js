@@ -8,9 +8,7 @@ const CarCard = () => {
                 <div>
                     02.07.2021
                 </div>
-                <LikeImage>
-                    <i class="far fa-heart"></i>
-                </LikeImage>
+                <i class="far fa-heart"></i>
             </DateContainer>
             <Image src="https://g1-bg.cars.bg/2021-01-30_2/60159a1fd9e18c11211fbd03o.jpg" alt="car" />
             <Price>10.500лв.</Price>
@@ -40,6 +38,10 @@ const Container = styled(Link)`
         -moz-box-shadow: 0px 0px 53px -5px rgba(0,0,0,0.74);
         transform: scale(1.03);
     }
+
+    i {
+        font-size: 20px;
+    }
 `;
 
 const DateContainer = styled.div`
@@ -51,10 +53,6 @@ const DateContainer = styled.div`
     align-items: center;
     padding: 0 5px;
     color: #4E4E4E;
-`;
-
-const LikeImage = styled.div`
-    font-size: 20px;
 `;
 
 const Image = styled.img`
