@@ -66,8 +66,8 @@ const Bar = styled.div`
 const LinkButton = styled(Link)`
     text-decoration: none;
     font-size: 1.3rem;
-    color: #FFF;
     font-family: cursive;
+    color: #FFF;
     position: relative;
     padding: 10px;
 
