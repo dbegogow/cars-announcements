@@ -22,8 +22,8 @@ export default AuthFormContainer;
 
 const Container = styled.div`
     background: #22A1E2;
-    margin: 25vh 10vw 20vh 10vw;
-    height: 30vh;
+    margin: 27vh 10vw 20vh 10vw;
+    height: 38vh;
 `;
 
 const Content = styled.div`

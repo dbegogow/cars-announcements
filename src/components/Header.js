@@ -5,7 +5,9 @@ const Header = () => {
     return (
         <Nav>
             <div>
-                <Title>Продай или купи своята нова кола!</Title>
+                <Title to="/">
+                    Продай или купи своята нова кола!
+                </Title>
             </div>
             <div>
                 <LinkButton to="/login">
@@ -49,10 +51,12 @@ const Nav = styled.nav`
     }
 `;
 
-const Title = styled.h1`
+const Title = styled(Link)`
     font-family: 'Caveat', cursive;
     font-size: 2rem;
     margin: 0;
+    text-decoration: none;
+    color: #FFF;
 `;
 
 const LinkButton = styled(Link)`
