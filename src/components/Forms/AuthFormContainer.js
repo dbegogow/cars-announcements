@@ -1,27 +1,49 @@
 import styled from "styled-components";
-import AuthFormContainer from "./AuthFormContainer";
+import AuthWrapper from "./AuthWrapper";
 
-const LoginForm = () => {
+const AuthFormContainer = ({
+    title,
+    buttonText,
+    children
+}) => {
     return (
         <>
             <Container>
                 <ContentContainer>
                     <Title>
-                        Влизане
+                        {title}
                     </Title>
                     <Form>
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
-                        <button type="submit">Влез</button>
+                        {children}
+                        <button type="submit">{buttonText}</button>
                     </Form>
                 </ContentContainer>
             </Container>
-            <AuthFormContainer />
+
+            {
+                title === 'Влизане'
+                    ? (
+                        <AuthWrapper
+                            title="Нямаш акаунт?"
+                            text="Създай своя акаунт още сега"
+                            buttonText="Регистриране"
+                            buttonPath="/register"
+                        />
+                    )
+                    : (
+                        <AuthWrapper
+                            title="Имаш вече акаунт?"
+                            text="Влез в своя акаунт"
+                            buttonText="Влизане"
+                            buttonPath="/login"
+                        />
+                    )
+            }
         </>
     );
 };
 
-export default LoginForm;
+export default AuthFormContainer;
 
 const Container = styled.div`
     background: #FFF;

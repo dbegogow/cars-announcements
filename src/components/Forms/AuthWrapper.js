@@ -1,24 +1,36 @@
+import { useHistory } from "react-router";
 import styled from "styled-components";
 
-const AuthFormContainer = () => {
+const AuthWrapper = ({
+    title,
+    text,
+    buttonText,
+    buttonPath
+}) => {
+    const history = useHistory();
+
+    const onClickButtonHandler = () => {
+        history.push(buttonPath);
+    };
+
     return (
         <Container>
             <Content>
                 <Title>
-                    Нямаш акаунт?
+                    {title}
                 </Title>
                 <Text>
-                    Създай своя акаунт още сега
+                    {text}
                 </Text>
-                <Button>
-                    Регистрация
+                <Button onClick={onClickButtonHandler}>
+                    {buttonText}
                 </Button>
             </Content>
         </Container>
     );
 };
 
-export default AuthFormContainer;
+export default AuthWrapper;
 
 const Container = styled.div`
     background: #22A1E2;
@@ -46,6 +58,7 @@ const Text = styled.p`
 `;
 
 const Button = styled.button`
+    text-decoration: none;
     padding: 7px;
     border: 3px solid #B3DD4B;
     border-radius: 15px;
