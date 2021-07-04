@@ -5,9 +5,6 @@ const Header = () => {
     return (
         <Nav>
             <div>
-                <Bar>
-                    <i class="fas fa-bars"></i>
-                </Bar>
                 <Title>Продай или купи своята нова кола!</Title>
             </div>
             <div>
@@ -56,12 +53,6 @@ const Title = styled.h1`
     font-family: 'Caveat', cursive;
     font-size: 2rem;
     margin: 0;
-`;
-
-const Bar = styled.div`
-    font-size: 28px;
-    margin-top: 5px;
-    margin-right: 15px;
 `;
 
 const LinkButton = styled(Link)`
