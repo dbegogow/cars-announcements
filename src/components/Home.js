@@ -49,6 +49,35 @@ const FiltersContainer = styled.div`
     height: 60vh;
     margin-right: 8vw;
     border: 2px solid #585858;
+
+    @media (max-width: 750px) {
+        width: 30vw;
+        height: 70vh;
+    }
+
+    @media (max-height: 1500px) {
+        height: 47vh;
+    }
+
+    @media (max-height: 1400px) {
+        height: 35vh;
+    }
+
+    @media (max-height: 820px) {
+        height: 58vh;
+    }
+
+    @media (max-height: 750px) {
+        height: 64vh;
+    }
+
+    @media (max-height: 670px) {
+        height: 70vh;
+    }
+
+    @media (max-height: 570px) {
+        height: 85vh;
+    }
 `;
 
 
@@ -61,12 +90,28 @@ const CarsContainer = styled.div`
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
     row-gap: 50px;
+
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @media (min-height: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
 `;
 
 const Title = styled.h3`
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.3rem;
+
+    @media (max-width: 750px) {
+        font-size: 1.1rem;
+    }
 `;
 
 const FilterButton = styled.button`
@@ -87,6 +132,10 @@ const FilterButton = styled.button`
         color: #000;
         border: 1px solid #000;
     }
+
+    @media (max-width: 750px) {
+        width: 23vw;
+    }
 `;
 
 const SerchButton = styled.button`
@@ -103,5 +152,9 @@ const SerchButton = styled.button`
     &:hover {
         cursor: pointer;
         background: #03B8F0;
+    }
+
+    @media (max-width: 750px) {
+        width: 26vw;
     }
 `;

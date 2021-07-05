@@ -57,6 +57,10 @@ const Title = styled(Link)`
     margin: 0;
     text-decoration: none;
     color: #FFF;
+
+    @media (max-width: 700px) {
+        display: none;
+    }
 `;
 
 const LinkButton = styled(Link)`
@@ -87,5 +91,9 @@ const LinkButton = styled(Link)`
     span:focus::after {
         opacity: 1;
         transform: translate3d(0, 0.2em, 0);
+    }
+
+    @media(max-width: 700px) {
+        margin-right: 16vw;
     }
 `;
