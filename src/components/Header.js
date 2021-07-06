@@ -42,13 +42,10 @@ const Nav = styled.nav`
         align-items: center;
     }
 
-    @media only screen and (max-width: 480px) {
-        h1 {
-            display: none;
-        }
-
-        padding: 0 8vw;
-    }
+    @media (max-width: 750px) {
+        flex-direction: column;
+        align-items: flex-start;
+    } 
 `;
 
 const Title = styled(Link)`
@@ -58,9 +55,9 @@ const Title = styled(Link)`
     text-decoration: none;
     color: #FFF;
 
-    @media (max-width: 700px) {
-        display: none;
-    }
+    @media (max-width: 750px) {
+        font-size: 1.5rem;
+    } 
 `;
 
 const LinkButton = styled(Link)`
@@ -93,7 +90,7 @@ const LinkButton = styled(Link)`
         transform: translate3d(0, 0.2em, 0);
     }
 
-    @media(max-width: 700px) {
-        margin-right: 16vw;
-    }
+    @media (max-width: 750px) {
+        font-size: 1rem;
+    } 
 `;

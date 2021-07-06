@@ -42,36 +42,6 @@ const Container = styled(Link)`
     i {
         font-size: 20px;
     }
-
-    @media (max-width: 1100px) {
-        width: 20vw;
-        height: 47vh;
-    }
-
-    @media (max-width: 1000px) {
-        width: 27vw;
-        height: 47vh;
-    }
-
-    @media (max-width: 750px) {
-        width: 55vw;
-        height: 52vh;
-        margin-left: 8vw;
-    }
-
-    @media (max-width: 340px) {
-        height: 63vh;
-    }
-
-    @media (min-height: 1200px) {
-        width: 30vw;
-        height: 37vh;
-    }
-
-    @media (min-height: 1024px) {
-        width: 30vw;
-        height: 42vh;
-    }
 `;
 
 const DateContainer = styled.div`
