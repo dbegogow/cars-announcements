@@ -46,9 +46,17 @@ const Wrapper = styled.div`
 const FiltersContainer = styled.div`
     position: fixed;
     width: 20vw;
-    height: 60vh;
+    height: 490px;
     margin-right: 8vw;
     border: 2px solid #585858;
+
+    @media (max-width: 800px) {
+        width: 28vw;
+    }
+
+    @media (max-width: 420px) {
+        width: 32vw;
+    }
 `;
 
 
@@ -61,6 +69,15 @@ const CarsContainer = styled.div`
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
     row-gap: 50px;
+
+    @media (max-width: 1270px) {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0;
+    }
+
+    @media (max-width: 890px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `;
 
 const Title = styled.h3`
@@ -87,6 +104,10 @@ const FilterButton = styled.button`
         color: #000;
         border: 1px solid #000;
     }
+
+    @media (max-width: 800px) {
+        width: 20vw;
+    }
 `;
 
 const SerchButton = styled.button`
@@ -103,5 +124,9 @@ const SerchButton = styled.button`
     &:hover {
         cursor: pointer;
         background: #03B8F0;
+    }
+
+    @media (max-width: 800px) {
+        width: 23vw;
     }
 `;

@@ -25,8 +25,8 @@ export default CarCard;
 const Container = styled(Link)`
     color: inherit;
     text-decoration: none;
-    width: 19vw;
-    height: 47vh;
+    width: 290px;
+    height: 370px;
     border: 2px solid #DEDEDE;
     border-radius: 5px;
     position: relative;
@@ -41,6 +41,24 @@ const Container = styled(Link)`
 
     i {
         font-size: 20px;
+    }
+
+    @media (max-width: 550px) {
+        width: 230px;
+        height: 370px;
+    }
+
+    @media (max-width: 420px) {
+        width: 200px;
+        height: 360px;
+    }
+
+    @media (min-height: 1020px) { 
+        height: 430px;
+    }
+
+    @media (min-height: 1300px) { 
+        height: 500px;
     }
 `;
 
