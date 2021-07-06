@@ -55,6 +55,12 @@ const Container = styled.div`
     box-shadow: 0px 0px 15px 7px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 0px 15px 7px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 15px 7px rgba(0,0,0,0.75);
+
+    @media (max-width: 700px) {
+        width: 70vw;
+        left: 14vw;
+        top: 21vh;
+    }
 `;
 
 const ContentContainer = styled.div`

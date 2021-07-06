@@ -36,6 +36,10 @@ const Container = styled.div`
     background: #22A1E2;
     margin: 27vh 10vw 20vh 10vw;
     height: 38vh;
+
+    @media (max-width: 700px) {
+        display: none;
+    }
 `;
 
 const Content = styled.div`
