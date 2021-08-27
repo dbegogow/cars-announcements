@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CarCard from './CarCard';
+import Card from './Card';
 
 const Home = () => {
     return (
@@ -17,18 +17,18 @@ const Home = () => {
                 <SerchButton>Търси</SerchButton>
             </FiltersContainer>
             <CarsContainer>
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
             </CarsContainer>
         </Wrapper>
     );

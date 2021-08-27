@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CarCard = () => {
+const Card = () => {
     return (
         <Container to={`/car`}>
             <DateContainer>
@@ -20,7 +20,7 @@ const CarCard = () => {
     );
 };
 
-export default CarCard;
+export default Card;
 
 const Container = styled(Link)`
     color: inherit;
