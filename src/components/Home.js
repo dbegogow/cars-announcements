@@ -16,6 +16,12 @@ const Home = () => {
                 <FilterButton>Мощност</FilterButton>
                 <SerchButton>Търси</SerchButton>
             </FiltersContainer>
+            <div>
+                <Overlay />
+                <Modal>
+                    I am the modal window!
+                </Modal>
+            </div>
             <CarsContainer>
                 <Card />
                 <Card />
@@ -58,8 +64,6 @@ const FiltersContainer = styled.div`
         width: 32vw;
     }
 `;
-
-
 
 const CarsContainer = styled.div`
     width: 69vw;
@@ -129,4 +133,29 @@ const SerchButton = styled.button`
     @media (max-width: 800px) {
         width: 23vw;
     }
+`;
+
+const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+`;
+
+const Modal = styled.div`
+    width: 300px;
+    height: 200px;
+    line-height: 200px;
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    background-color: #f1c40f;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 11;
 `;
