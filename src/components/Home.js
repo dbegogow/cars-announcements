@@ -1,11 +1,19 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import FilterButton from './FilterButton';
 import Card from './Card';
 
 const Home = () => {
+    const [isOpenFilter, setIsOpenFilter] = useState(false);
+
+    const filter = () => {
+        isOpenFilter
+            ? setIsOpenFilter(false)
+            : setIsOpenFilter(true);
+    };
+
     return (
         <Wrapper>
-            <FiltersContainer>
+            <FiltersContainer onClick={filter}>
                 <Title>Филтрирай</Title>
                 <FilterButton>Купе</FilterButton>
                 <FilterButton>Марка</FilterButton>
@@ -17,7 +25,7 @@ const Home = () => {
                 <FilterButton>Мощност</FilterButton>
                 <SerchButton>Търси</SerchButton>
             </FiltersContainer>
-            <div style={{display: 'none'}}>
+            <div style={{ display: isOpenFilter ? '' : 'none' }}>
                 <Overlay />
                 <Modal>
                     I am the modal window!
@@ -63,6 +71,30 @@ const FiltersContainer = styled.div`
 
     @media (max-width: 420px) {
         width: 32vw;
+    }
+`;
+
+const FilterButton = styled.button`
+    width: 12vw;
+    margin-left: 3.5vw;
+    margin-bottom: 10px;
+    padding: 7px 0;
+    border-radius: 15px;
+    border: none;
+    background: #3E98C3;
+    border: 1px solid #3E98C3;
+    color: #FFF;
+    font-size: 0.95rem;
+
+    &:hover {
+        cursor: pointer;
+        background: #8CF1F5;
+        color: #000;
+        border: 1px solid #000;
+    }
+
+    @media (max-width: 800px) {
+        width: 20vw;
     }
 `;
 
