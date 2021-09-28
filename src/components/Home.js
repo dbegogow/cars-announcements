@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import FilterButton from './FilterButton';
 import Card from './Card';
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
                 <FilterButton>Мощност</FilterButton>
                 <SerchButton>Търси</SerchButton>
             </FiltersContainer>
-            <div>
+            <div style={{display: 'none'}}>
                 <Overlay />
                 <Modal>
                     I am the modal window!
@@ -88,30 +89,6 @@ const Title = styled.h3`
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.3rem;
-`;
-
-const FilterButton = styled.button`
-    width: 12vw;
-    margin-left: 3.5vw;
-    margin-bottom: 10px;
-    padding: 7px 0;
-    border-radius: 15px;
-    border: none;
-    background: #3E98C3;
-    border: 1px solid #3E98C3;
-    color: #FFF;
-    font-size: 0.95rem;
-
-    &:hover {
-        cursor: pointer;
-        background: #8CF1F5;
-        color: #000;
-        border: 1px solid #000;
-    }
-
-    @media (max-width: 800px) {
-        width: 20vw;
-    }
 `;
 
 const SerchButton = styled.button`
