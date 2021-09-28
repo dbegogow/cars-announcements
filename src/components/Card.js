@@ -8,7 +8,7 @@ const Card = () => {
                 <div>
                     02.07.2021
                 </div>
-                <i class="far fa-heart"></i>
+                <i className="far fa-heart"></i>
             </DateContainer>
             <Image src="https://g1-bg.cars.bg/2021-01-30_2/60159a1fd9e18c11211fbd03o.jpg" alt="car" />
             <Price>10.500лв.</Price>

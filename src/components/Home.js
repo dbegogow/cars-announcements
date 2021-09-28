@@ -146,16 +146,21 @@ const Overlay = styled.div`
 `;
 
 const Modal = styled.div`
-    width: 300px;
+    width: 600px;
     height: 200px;
     line-height: 200px;
     position: fixed;
     top: 50%; 
     left: 50%;
     margin-top: -100px;
-    margin-left: -150px;
-    background-color: #f1c40f;
+    margin-left: -300px;
+    background-color: #A4F2ED;
     border-radius: 5px;
     text-align: center;
     z-index: 11;
+
+    @media (max-width: 680px) {
+        width: 300px;
+        margin-left: -150px;
+    }
 `;
