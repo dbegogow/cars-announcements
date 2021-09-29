@@ -10,10 +10,12 @@ const Home = () => {
 
         if (target.localName !== 'button') { return; }
 
-        isOpenFilter
-            ? setIsOpenFilter(false)
-            : setIsOpenFilter(true);
+        setIsOpenFilter(true);
     };
+
+    const closeFilter = () => {
+        setIsOpenFilter(false);
+    }
 
     return (
         <Wrapper>
@@ -34,9 +36,9 @@ const Home = () => {
             <div style={{ display: isOpenFilter ? '' : 'none' }}>
                 <Overlay />
                 <Modal>
-                    <CloseButton>
+                    <CloseFilterButton onClick={closeFilter}>
                         <i className="fas fa-times"></i>
-                    </CloseButton>
+                    </CloseFilterButton>
                 </Modal>
             </div>
             <CarsContainer>
@@ -182,7 +184,7 @@ const Modal = styled.div`
     }
 `;
 
-const CloseButton = styled.button`
+const CloseFilterButton = styled.button`
     position: absolute;
     top: 10px;
     right: 15px;
