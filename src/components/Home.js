@@ -39,6 +39,11 @@ const Home = () => {
                     <CloseFilterButton onClick={closeFilter}>
                         <i className="fas fa-times"></i>
                     </CloseFilterButton>
+                    <Data>
+                        <Item>Mercedes</Item>
+                        <Item>Audi</Item>
+                        <Item>BMW</Item>
+                    </Data>
                 </Modal>
             </div>
             <CarsContainer>
@@ -175,8 +180,8 @@ const Modal = styled.div`
     margin-left: -300px;
     background-color: #A4F2ED;
     border-radius: 5px;
-    text-align: center;
     z-index: 11;
+    overflow-y: scroll;
 
     @media (max-width: 680px) {
         width: 300px;
@@ -196,5 +201,31 @@ const CloseFilterButton = styled.button`
 
     &:hover {
         cursor: pointer;
+    }
+`;
+
+const Data = styled.div`
+    margin: 40px 10px 15px 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    @media (max-width: 680px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+`;
+
+const Item = styled.button`
+    background: #C2FF00;
+    margin: 7px;
+    border: 2px solid #6C6C6C;
+    border-radius: 12px;
+    padding: 5px;
+    font-size: 0.9rem;
+
+    &:hover {
+        cursor: pointer;
+        background: #2AC530;
+        color: #FFF;
+        transition: 0.4s ease;
     }
 `;
