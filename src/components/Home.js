@@ -5,7 +5,11 @@ import Card from './Card';
 const Home = () => {
     const [isOpenFilter, setIsOpenFilter] = useState(false);
 
-    const filter = () => {
+    const filter = (e) => {
+        const target = e.target;
+
+        if (target.localName !== 'button') { return; }
+
         isOpenFilter
             ? setIsOpenFilter(false)
             : setIsOpenFilter(true);
