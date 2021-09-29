@@ -32,7 +32,7 @@ const AuthFormContainer = ({
                     )
                     : (
                         <AuthWrapper
-                            title="Имаш вече акаунт?"
+                            title="Вече имаш акаунт?"
                             text="Влез в своя акаунт"
                             buttonText="Влизане"
                             buttonPath="/login"

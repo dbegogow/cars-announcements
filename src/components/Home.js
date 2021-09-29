@@ -17,22 +17,26 @@ const Home = () => {
 
     return (
         <Wrapper>
-            <FiltersContainer onClick={filter}>
-                <Title>Филтрирай</Title>
-                <FilterButton>Купе</FilterButton>
-                <FilterButton>Марка</FilterButton>
-                <FilterButton>Гориво</FilterButton>
-                <FilterButton>Скорости</FilterButton>
-                <FilterButton>Цена</FilterButton>
-                <FilterButton>Година</FilterButton>
-                <FilterButton>Брой врати</FilterButton>
-                <FilterButton>Мощност</FilterButton>
+            <FiltersContainer>
+                <div onClick={filter}>
+                    <Title>Филтрирай</Title>
+                    <FilterButton>Купе</FilterButton>
+                    <FilterButton>Марка</FilterButton>
+                    <FilterButton>Гориво</FilterButton>
+                    <FilterButton>Скорости</FilterButton>
+                    <FilterButton>Цена</FilterButton>
+                    <FilterButton>Година</FilterButton>
+                    <FilterButton>Брой врати</FilterButton>
+                    <FilterButton>Мощност</FilterButton>
+                </div>
                 <SerchButton>Търси</SerchButton>
             </FiltersContainer>
             <div style={{ display: isOpenFilter ? '' : 'none' }}>
                 <Overlay />
                 <Modal>
-                    I am the modal window!
+                    <CloseButton>
+                        <i className="fas fa-times"></i>
+                    </CloseButton>
                 </Modal>
             </div>
             <CarsContainer>
@@ -175,5 +179,20 @@ const Modal = styled.div`
     @media (max-width: 680px) {
         width: 300px;
         margin-left: -150px;
+    }
+`;
+
+const CloseButton = styled.button`
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 0;
+    color: #F32727;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+
+    &:hover {
+        cursor: pointer;
     }
 `;

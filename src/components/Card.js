@@ -10,7 +10,7 @@ const Card = () => {
                 </div>
                 <i className="far fa-heart"></i>
             </DateContainer>
-            <Image src="https://g1-bg.cars.bg/2021-01-30_2/60159a1fd9e18c11211fbd03o.jpg" alt="car" />
+            <Image src="https://i.ytimg.com/vi/6kevcDye9Bw/maxresdefault.jpg" alt="car" />
             <Price>10.500лв.</Price>
             <Model>BMW X3 2.0d Other somethig text</Model>
             <Specifications>2006, Дизел, 200000 км.</Specifications>
