@@ -4,7 +4,7 @@ import Card from './Card';
 
 const Home = () => {
     const [isOpenFilter, setIsOpenFilter] = useState(false);
-    const [isUserData, setIsUserData] = useState(false);
+    const [userData, setUserData] = useState(null);
 
     const filter = (e) => {
         const target = e.target;
@@ -12,9 +12,9 @@ const Home = () => {
         if (target.localName !== 'button') { return; }
 
         if (target.hasAttribute('data')) {
-            setIsUserData(true);
+            setUserData(target.textContent);
         } else {
-            setIsUserData(false);
+            setUserData(null);
         }
 
         setIsOpenFilter(true);
@@ -46,12 +46,20 @@ const Home = () => {
                     <CloseFilterButton onClick={closeFilter}>
                         <i className="fas fa-times"></i>
                     </CloseFilterButton>
-                    <ServerData style={{ display: isUserData ? 'none' : '' }}>
+                    <ServerData style={{ display: userData ? 'none' : '' }}>
                         <Item>Mercedes</Item>
                         <Item>Audi</Item>
                         <Item>BMW</Item>
                     </ServerData>
-                    <UserData style={{ display: isUserData ? '' : 'none' }}>
+                    <UserData style={{ display: userData ? '' : 'none' }}>
+                        <h2>{userData}</h2>
+                        <div>
+                            <label htmlFor="from">От:</label>
+                            <input id="from" type="text" />
+                            <label htmlFor="to">До:</label>
+                            <input id="to" type="text" />
+                            <button>Филтрирай</button>
+                        </div>
                     </UserData>
                 </Modal>
             </div>
@@ -112,9 +120,10 @@ const FilterButton = styled.button`
 
     &:hover {
         cursor: pointer;
-        background: #8CF1F5;
+        background: #DCDCDC;
         color: #000;
         border: 1px solid #000;
+        transition: 0.4s ease;
     }
 
     @media (max-width: 800px) {
@@ -187,7 +196,7 @@ const Modal = styled.div`
     left: 50%;
     margin-top: -100px;
     margin-left: -300px;
-    background-color: #A4F2ED;
+    background-color: #22A1E2;
     border-radius: 5px;
     z-index: 11;
     overflow-y: scroll;
@@ -203,7 +212,7 @@ const CloseFilterButton = styled.button`
     top: 10px;
     right: 15px;
     padding: 0;
-    color: #F32727;
+    color: #BF2B11;
     background: none;
     border: none;
     font-size: 1.2rem;
@@ -224,7 +233,7 @@ const ServerData = styled.div`
 `;
 
 const Item = styled.button`
-    background: #C2FF00;
+    background: #FFF;
     margin: 7px;
     border: 2px solid #6C6C6C;
     border-radius: 12px;
@@ -233,12 +242,49 @@ const Item = styled.button`
 
     &:hover {
         cursor: pointer;
-        background: #2AC530;
-        color: #FFF;
+        background: #E0E0E0;
         transition: 0.4s ease;
     }
 `;
 
 const UserData = styled.div`
+    margin-left: 40px;
+    margin-top: 10px;
+    color: #FFF;
 
+    h2 {
+        margin: 0;
+        position: absolute;
+        bottom: 45px;
+        font-size: 1.5rem;
+        color: #FFF;
+    }
+
+    div label {
+        margin-right: 3px;
+        font-size: 1.2rem;
+    }
+
+    div input {
+        margin-right: 20px;
+        width: 100px;
+        outline: none;
+        border: 1px solid #B6B6B6;
+        border-radius: 12px;
+        padding: 5px 10px;
+    }
+
+    button {
+        border: 1px solid #B6B6B6;
+        border-radius: 8px;
+        padding: 5px 10px;
+        font-size: 0.9rem;
+        background: #E0E0E0;
+        color: #000;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.04);
+        }
+    }
 `;

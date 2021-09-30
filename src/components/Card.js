@@ -86,7 +86,7 @@ const Price = styled.div`
     padding: 7px;
     font-family: cursive;
     background: #FFF;
-    border: 2px solid #0B6BC8;
+    border: 2px solid #B3DD4B;
     border-radius: 12px;
     font-size: 1.1rem;
 `;
