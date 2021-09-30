@@ -4,11 +4,18 @@ import Card from './Card';
 
 const Home = () => {
     const [isOpenFilter, setIsOpenFilter] = useState(false);
+    const [isUserData, setIsUserData] = useState(false);
 
     const filter = (e) => {
         const target = e.target;
 
         if (target.localName !== 'button') { return; }
+
+        if (target.hasAttribute('data')) {
+            setIsUserData(true);
+        } else {
+            setIsUserData(false);
+        }
 
         setIsOpenFilter(true);
     };
@@ -26,10 +33,10 @@ const Home = () => {
                     <FilterButton>Марка</FilterButton>
                     <FilterButton>Гориво</FilterButton>
                     <FilterButton>Скорости</FilterButton>
-                    <FilterButton>Цена</FilterButton>
-                    <FilterButton>Година</FilterButton>
+                    <FilterButton data="true">Цена</FilterButton>
+                    <FilterButton data="true">Година</FilterButton>
                     <FilterButton>Брой врати</FilterButton>
-                    <FilterButton>Мощност</FilterButton>
+                    <FilterButton data="true">Мощност</FilterButton>
                 </div>
                 <SerchButton>Търси</SerchButton>
             </FiltersContainer>
@@ -39,11 +46,13 @@ const Home = () => {
                     <CloseFilterButton onClick={closeFilter}>
                         <i className="fas fa-times"></i>
                     </CloseFilterButton>
-                    <Data>
+                    <ServerData style={{ display: isUserData ? 'none' : '' }}>
                         <Item>Mercedes</Item>
                         <Item>Audi</Item>
                         <Item>BMW</Item>
-                    </Data>
+                    </ServerData>
+                    <UserData style={{ display: isUserData ? '' : 'none' }}>
+                    </UserData>
                 </Modal>
             </div>
             <CarsContainer>
@@ -204,7 +213,7 @@ const CloseFilterButton = styled.button`
     }
 `;
 
-const Data = styled.div`
+const ServerData = styled.div`
     margin: 40px 10px 15px 10px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -228,4 +237,8 @@ const Item = styled.button`
         color: #FFF;
         transition: 0.4s ease;
     }
+`;
+
+const UserData = styled.div`
+
 `;
