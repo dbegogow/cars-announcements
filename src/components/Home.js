@@ -5,6 +5,8 @@ import Card from './Card';
 const Home = () => {
     const [isOpenFilter, setIsOpenFilter] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [modalHeight, setModalHeight] = useState();
+    const [modalTop, setModalTop] = useState();
 
     const filter = (e) => {
         const target = e.target;
@@ -13,8 +15,12 @@ const Home = () => {
 
         if (target.hasAttribute('data')) {
             setUserData(target.textContent);
+            setModalHeight('200px');
+            setModalTop('50%');
         } else {
             setUserData(null);
+            setModalHeight('350px');
+            setModalTop('40%');
         }
 
         setIsOpenFilter(true);
@@ -42,7 +48,7 @@ const Home = () => {
             </FiltersContainer>
             <div style={{ display: isOpenFilter ? '' : 'none' }}>
                 <Overlay />
-                <Modal>
+                <Modal height={modalHeight} top={modalTop}>
                     <CloseFilterButton onClick={closeFilter}>
                         <i className="fas fa-times"></i>
                     </CloseFilterButton>
@@ -187,19 +193,21 @@ const Overlay = styled.div`
     z-index: 10;
 `;
 
-const Modal = styled.div`
+const Modal = styled.div.attrs(props => ({
+    height: props.height,
+    top: props.top
+}))`
     width: 600px;
-    height: 200px;
+    height: ${props => props.height};
     line-height: 200px;
     position: fixed;
-    top: 50%; 
+    top: ${props => props.top}; 
     left: 50%;
     margin-top: -100px;
     margin-left: -300px;
     background-color: #22A1E2;
     border-radius: 5px;
     z-index: 11;
-    overflow-y: scroll;
 
     @media (max-width: 680px) {
         width: 300px;
