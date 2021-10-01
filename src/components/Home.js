@@ -8,7 +8,7 @@ const Home = () => {
     const [modalHeight, setModalHeight] = useState();
     const [modalTop, setModalTop] = useState();
 
-    const filter = (e) => {
+    const openFilter = (e) => {
         const target = e.target;
 
         if (target.localName !== 'button') { return; }
@@ -33,7 +33,7 @@ const Home = () => {
     return (
         <Wrapper>
             <FiltersContainer>
-                <div onClick={filter}>
+                <div onClick={openFilter}>
                     <Title>Филтрирай</Title>
                     <FilterButton>Купе</FilterButton>
                     <FilterButton>Марка</FilterButton>
@@ -65,6 +65,7 @@ const Home = () => {
                             <label htmlFor="to">До:</label>
                             <input id="to" type="text" />
                             <button>Филтрирай</button>
+                            <button>Изчисти</button>
                         </div>
                     </UserData>
                 </Modal>
@@ -289,6 +290,7 @@ const UserData = styled.div`
         font-size: 0.9rem;
         background: #E0E0E0;
         color: #000;
+        margin-right: 10px;
 
         &:hover {
             cursor: pointer;
