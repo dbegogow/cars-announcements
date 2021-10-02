@@ -1,12 +1,25 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
+import Filters from './Filters';
 
 const Home = () => {
     const [isOpenFilter, setIsOpenFilter] = useState(false);
     const [userData, setUserData] = useState(null);
     const [modalHeight, setModalHeight] = useState();
     const [modalTop, setModalTop] = useState();
+
+    const [model, setModel] = useState();
+    const [brand, setBrand] = useState();
+    const [fuel, setFuel] = useState();
+    const [transmission, setTransmission] = useState();
+    const [fromPrice, setFromPrice] = useState(0);
+    const [toPrice, setToPrice] = useState(0);
+    const [fromYear, setFromYear] = useState(0);
+    const [toYear, setToYear] = useState(0);
+    const [doors, setDoors] = useState(0);
+    const [fromPower, setFromPower] = useState(0);
+    const [toPower, setToPower] = useState(0);
 
     const openFilter = (e) => {
         const target = e.target;
@@ -28,11 +41,16 @@ const Home = () => {
 
     const closeFilter = () => {
         setIsOpenFilter(false);
-    }
+    };
+
+    const addServerDataFilter = (e) => {
+        console.log(e);
+    };
 
     return (
         <Wrapper>
-            <FiltersContainer>
+            <Filters openFilter={openFilter} />
+            {/* <FiltersContainer>
                 <div onClick={openFilter}>
                     <Title>Филтрирай</Title>
                     <FilterButton>Купе</FilterButton>
@@ -45,14 +63,14 @@ const Home = () => {
                     <FilterButton data="true">Мощност</FilterButton>
                 </div>
                 <SerchButton>Търси</SerchButton>
-            </FiltersContainer>
+            </FiltersContainer> */}
             <div style={{ display: isOpenFilter ? '' : 'none' }}>
                 <Overlay />
                 <Modal height={modalHeight} top={modalTop}>
                     <CloseFilterButton onClick={closeFilter}>
                         <i className="fas fa-times"></i>
                     </CloseFilterButton>
-                    <ServerData style={{ display: userData ? 'none' : '' }}>
+                    <ServerData style={{ display: userData ? 'none' : '' }} onClick={addServerDataFilter}>
                         <Item>Mercedes</Item>
                         <Item>Audi</Item>
                         <Item>BMW</Item>
@@ -97,47 +115,6 @@ const Wrapper = styled.div`
     flex-direction: row;
 `;
 
-const FiltersContainer = styled.div`
-    position: fixed;
-    width: 20vw;
-    height: 490px;
-    margin-right: 8vw;
-    border: 2px solid #585858;
-
-    @media (max-width: 800px) {
-        width: 28vw;
-    }
-
-    @media (max-width: 420px) {
-        width: 32vw;
-    }
-`;
-
-const FilterButton = styled.button`
-    width: 12vw;
-    margin-left: 3.5vw;
-    margin-bottom: 10px;
-    padding: 7px 0;
-    border-radius: 15px;
-    border: none;
-    background: #3E98C3;
-    border: 1px solid #3E98C3;
-    color: #FFF;
-    font-size: 0.95rem;
-
-    &:hover {
-        cursor: pointer;
-        background: #DCDCDC;
-        color: #000;
-        border: 1px solid #000;
-        transition: 0.4s ease;
-    }
-
-    @media (max-width: 800px) {
-        width: 20vw;
-    }
-`;
-
 const CarsContainer = styled.div`
     width: 69vw;
     margin-left: 27vw;
@@ -154,33 +131,6 @@ const CarsContainer = styled.div`
 
     @media (max-width: 890px) {
         grid-template-columns: repeat(1, 1fr);
-    }
-`;
-
-const Title = styled.h3`
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.3rem;
-`;
-
-const SerchButton = styled.button`
-    width: 15vw;
-    margin-left: 2vw;
-    margin-top: 3px;
-    border-radius: 15px;
-    border: 2px solid #1423AB;
-    background: #2FA3F0;
-    padding: 10px 0;
-    color: #FFF;
-    font-size: 0.95rem;
-
-    &:hover {
-        cursor: pointer;
-        background: #03B8F0;
-    }
-
-    @media (max-width: 800px) {
-        width: 23vw;
     }
 `;
 
