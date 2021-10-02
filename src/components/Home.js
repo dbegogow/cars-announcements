@@ -9,6 +9,12 @@ const Home = () => {
     const [modalHeight, setModalHeight] = useState();
     const [modalTop, setModalTop] = useState();
 
+    const [models, setModels] = useState();
+    const [brands, setBrands] = useState();
+    const [fuels, setFuels] = useState();
+    const [transmissions, setTransmissions] = useState();
+    const [doorsType, setDoorsType] = useState();
+
     const [model, setModel] = useState();
     const [brand, setBrand] = useState();
     const [fuel, setFuel] = useState();
@@ -38,6 +44,11 @@ const Home = () => {
             setUserData(null);
             setModalHeight('350px');
             setModalTop('40%');
+        }
+
+        switch (attribute) {
+            case 'model':
+                break;
         }
 
         setIsOpenFilter(true);
