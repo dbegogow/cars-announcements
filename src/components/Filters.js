@@ -7,14 +7,14 @@ const Filters = ({
         <FiltersContainer>
             <div onClick={openFilter}>
                 <Title>Филтрирай</Title>
-                <FilterButton>Купе</FilterButton>
-                <FilterButton>Марка</FilterButton>
-                <FilterButton>Гориво</FilterButton>
-                <FilterButton>Скорости</FilterButton>
-                <FilterButton data="true">Цена</FilterButton>
-                <FilterButton data="true">Година</FilterButton>
-                <FilterButton>Брой врати</FilterButton>
-                <FilterButton data="true">Мощност</FilterButton>
+                <FilterButton data="model">Купе</FilterButton>
+                <FilterButton data="brand">Марка</FilterButton>
+                <FilterButton data="fuel">Гориво</FilterButton>
+                <FilterButton data="transmission">Скорости</FilterButton>
+                <FilterButton data="price">Цена</FilterButton>
+                <FilterButton data="year">Година</FilterButton>
+                <FilterButton data="doors">Брой врати</FilterButton>
+                <FilterButton data="power">Мощност</FilterButton>
             </div>
             <SerchButton>Търси</SerchButton>
         </FiltersContainer>

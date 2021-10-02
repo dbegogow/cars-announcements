@@ -26,7 +26,11 @@ const Home = () => {
 
         if (target.localName !== 'button') { return; }
 
-        if (target.hasAttribute('data')) {
+        var attribute = target.getAttribute('data');
+
+        if (attribute === 'price' ||
+            attribute === 'year' ||
+            attribute === 'power') {
             setUserData(target.textContent);
             setModalHeight('200px');
             setModalTop('50%');
@@ -43,34 +47,16 @@ const Home = () => {
         setIsOpenFilter(false);
     };
 
-    const addServerDataFilter = (e) => {
-        console.log(e);
-    };
-
     return (
         <Wrapper>
             <Filters openFilter={openFilter} />
-            {/* <FiltersContainer>
-                <div onClick={openFilter}>
-                    <Title>Филтрирай</Title>
-                    <FilterButton>Купе</FilterButton>
-                    <FilterButton>Марка</FilterButton>
-                    <FilterButton>Гориво</FilterButton>
-                    <FilterButton>Скорости</FilterButton>
-                    <FilterButton data="true">Цена</FilterButton>
-                    <FilterButton data="true">Година</FilterButton>
-                    <FilterButton>Брой врати</FilterButton>
-                    <FilterButton data="true">Мощност</FilterButton>
-                </div>
-                <SerchButton>Търси</SerchButton>
-            </FiltersContainer> */}
             <div style={{ display: isOpenFilter ? '' : 'none' }}>
                 <Overlay />
                 <Modal height={modalHeight} top={modalTop}>
                     <CloseFilterButton onClick={closeFilter}>
                         <i className="fas fa-times"></i>
                     </CloseFilterButton>
-                    <ServerData style={{ display: userData ? 'none' : '' }} onClick={addServerDataFilter}>
+                    <ServerData style={{ display: userData ? 'none' : '' }}>
                         <Item>Mercedes</Item>
                         <Item>Audi</Item>
                         <Item>BMW</Item>
@@ -78,11 +64,13 @@ const Home = () => {
                     <UserData style={{ display: userData ? '' : 'none' }}>
                         <h2>{userData}</h2>
                         <div>
-                            <label htmlFor="from">От:</label>
-                            <input id="from" type="text" />
-                            <label htmlFor="to">До:</label>
-                            <input id="to" type="text" />
-                            <button>Филтрирай</button>
+                            <form>
+                                <label htmlFor="from">От:</label>
+                                <input id="from" type="text" />
+                                <label htmlFor="to">До:</label>
+                                <input id="to" type="text" />
+                                <button>Филтрирай</button>
+                            </form>
                             <button>Изчисти</button>
                         </div>
                     </UserData>
@@ -217,6 +205,10 @@ const UserData = styled.div`
         bottom: 45px;
         font-size: 1.5rem;
         color: #FFF;
+    }
+
+    form {
+        display: inline-block;
     }
 
     div label {
