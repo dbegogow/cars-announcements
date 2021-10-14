@@ -48,6 +48,7 @@ const Home = () => {
 
         switch (attribute) {
             case 'model':
+                
                 break;
         }
 
