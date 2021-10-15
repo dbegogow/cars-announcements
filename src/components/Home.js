@@ -45,23 +45,23 @@ const Home = () => {
         switch (attribute) {
             case 'model':
                 await filterData('models')
-                    .then(data => setServerData(data));
+                    .then(data => setServerData({ name: data, filter: 'model' }));
                 break;
             case 'brand':
                 await filterData('brands')
-                    .then(data => setServerData(data));
+                    .then(data => setServerData({ name: data, filter: 'model' }));
                 break;
             case 'fuel':
                 await filterData('fuels')
-                    .then(data => setServerData(data));
+                    .then(data => setServerData({ name: data, filter: 'model' }));
                 break;
             case 'transmission':
                 await filterData('transmissions')
-                    .then(data => setServerData(data));
+                    .then(data => setServerData({ name: data, filter: 'model' }));
                 break;
             case 'doors':
                 await filterData('doors')
-                    .then(data => setServerData(data));
+                    .then(data => setServerData({ name: data, filter: 'model' }));
                 break;
         }
 
@@ -83,7 +83,7 @@ const Home = () => {
                     </CloseFilterButton>
                     <ServerData style={{ display: userData ? 'none' : '' }}>
                         {
-                            serverData?.map(data => <Item>{data}</Item>)
+                            serverData?.map(data => <Item>{data.name}</Item>)
                         }
                     </ServerData>
                     <UserData style={{ display: userData ? '' : 'none' }}>
