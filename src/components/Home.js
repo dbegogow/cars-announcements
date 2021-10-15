@@ -1,19 +1,15 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { filterData } from '../services/cars';
 import Card from './Card';
 import Filters from './Filters';
 
 const Home = () => {
     const [isOpenFilter, setIsOpenFilter] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [serverData, setServerData] = useState([]);
     const [modalHeight, setModalHeight] = useState();
     const [modalTop, setModalTop] = useState();
-
-    const [models, setModels] = useState();
-    const [brands, setBrands] = useState();
-    const [fuels, setFuels] = useState();
-    const [transmissions, setTransmissions] = useState();
-    const [doorsType, setDoorsType] = useState();
 
     const [model, setModel] = useState();
     const [brand, setBrand] = useState();
@@ -27,7 +23,7 @@ const Home = () => {
     const [fromPower, setFromPower] = useState(0);
     const [toPower, setToPower] = useState(0);
 
-    const openFilter = (e) => {
+    const openFilter = async (e) => {
         const target = e.target;
 
         if (target.localName !== 'button') { return; }
@@ -48,7 +44,24 @@ const Home = () => {
 
         switch (attribute) {
             case 'model':
-                
+                await filterData('models')
+                    .then(data => setServerData(data));
+                break;
+            case 'brand':
+                await filterData('brands')
+                    .then(data => setServerData(data));
+                break;
+            case 'fuel':
+                await filterData('fuels')
+                    .then(data => setServerData(data));
+                break;
+            case 'transmission':
+                await filterData('transmissions')
+                    .then(data => setServerData(data));
+                break;
+            case 'doors':
+                await filterData('doors')
+                    .then(data => setServerData(data));
                 break;
         }
 
@@ -69,9 +82,9 @@ const Home = () => {
                         <i className="fas fa-times"></i>
                     </CloseFilterButton>
                     <ServerData style={{ display: userData ? 'none' : '' }}>
-                        <Item>Mercedes</Item>
-                        <Item>Audi</Item>
-                        <Item>BMW</Item>
+                        {
+                            serverData?.map(data => <Item>{data}</Item>)
+                        }
                     </ServerData>
                     <UserData style={{ display: userData ? '' : 'none' }}>
                         <h2>{userData}</h2>
