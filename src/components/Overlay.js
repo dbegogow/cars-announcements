@@ -15,7 +15,7 @@ const Overlay = ({
                     <Item>Audi</Item>
                 </ServerData>
                 <UserData style={{ display: 'none' }}>
-                    <h2></h2>
+                    <h2>Filter</h2>
                     <div>
                         <form>
                             <label htmlFor="from">От:</label>
