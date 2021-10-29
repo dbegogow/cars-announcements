@@ -1,29 +1,33 @@
 import styled from 'styled-components';
+import Overlay from './Overlay';
 
 const Filters = ({
     openFilter
 }) => {
     return (
-        <FiltersContainer>
-            <div onClick={openFilter}>
-                <Title>Филтрирай</Title>
-                <FilterButton data="model">Купе</FilterButton>
-                <FilterButton data="brand">Марка</FilterButton>
-                <FilterButton data="fuel">Гориво</FilterButton>
-                <FilterButton data="transmission">Скорости</FilterButton>
-                <FilterButton data="price">Цена</FilterButton>
-                <FilterButton data="year">Година</FilterButton>
-                <FilterButton data="doors">Брой врати</FilterButton>
-                <FilterButton data="power">Мощност</FilterButton>
-            </div>
-            <SerchButton>Търси</SerchButton>
-        </FiltersContainer>
+        <>
+            <Container>
+                <div onClick={openFilter}>
+                    <Title>Филтрирай</Title>
+                    <FilterButton data="model">Купе</FilterButton>
+                    <FilterButton data="brand">Марка</FilterButton>
+                    <FilterButton data="fuel">Гориво</FilterButton>
+                    <FilterButton data="transmission">Скорости</FilterButton>
+                    <FilterButton data="price">Цена</FilterButton>
+                    <FilterButton data="year">Година</FilterButton>
+                    <FilterButton data="doors">Брой врати</FilterButton>
+                    <FilterButton data="power">Мощност</FilterButton>
+                </div>
+                <SerchButton>Търси</SerchButton>
+            </Container>
+            <Overlay />
+        </>
     );
 };
 
 export default Filters;
 
-const FiltersContainer = styled.div`
+const Container = styled.div`
     position: fixed;
     width: 20vw;
     height: 490px;

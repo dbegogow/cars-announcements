@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { filterData } from '../services/cars';
 import Card from './Card';
 import Filters from './Filters';
-import Overlay from './Overlay';
 
 const Home = () => {
 
     return (
         <Wrapper>
             <Filters />
-            <Overlay />
             <CarsContainer>
                 <Card />
             </CarsContainer>
