@@ -1,14 +1,15 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Overlay from './Overlay';
 
-const Filters = ({
-    openFilter
-}) => {
+const Filters = () => {
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+
     return (
         <>
             <Container>
-                <div onClick={openFilter}>
-                    <Title>Филтрирай</Title>
+                <Title>Филтрирай</Title>
+                <div onClick={() => setIsFilterOpen(true)}>
                     <FilterButton data="model">Купе</FilterButton>
                     <FilterButton data="brand">Марка</FilterButton>
                     <FilterButton data="fuel">Гориво</FilterButton>
@@ -18,9 +19,10 @@ const Filters = ({
                     <FilterButton data="doors">Брой врати</FilterButton>
                     <FilterButton data="power">Мощност</FilterButton>
                 </div>
-                <SerchButton>Търси</SerchButton>
             </Container>
-            <Overlay />
+            {
+                isFilterOpen ? <Overlay setIsFilterOpen={setIsFilterOpen} /> : null
+            }
         </>
     );
 };

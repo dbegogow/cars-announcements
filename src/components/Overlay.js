@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
-const Overlay = () => {
-    const isUserData = false;
-
+const Overlay = ({
+    setIsFilterOpen
+}) => {
     return (
         <div>
             <Container />
             <Modal height='200px' top='50%'>
-                <CloseFilterButton>
+                <CloseFilterButton onClick={() => setIsFilterOpen(false)}>
                     <i className="fas fa-times"></i>
                 </CloseFilterButton>
-                <ServerData style={{ display: isUserData ? 'none' : '' }}>
+                <ServerData >
                     <Item>Mercedes</Item>
                     <Item>Audi</Item>
                 </ServerData>
-                <UserData style={{ display: isUserData ? '' : 'none' }}>
+                <UserData style={{ display: 'none' }}>
                     <h2></h2>
                     <div>
                         <form>
@@ -52,7 +52,7 @@ const Modal = styled.div.attrs(props => ({
     height: ${props => props.height};
     line-height: 200px;
     position: fixed;
-    top: ${props => props.top}; 
+    top: ${props => props.top};
     left: 50%;
     margin-top: -100px;
     margin-left: -300px;
