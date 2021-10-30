@@ -29,7 +29,7 @@ const Filters = () => {
         setFilter(() => currFilter);
 
         const data = await getFilterData(name);
-        setFilterData(data);
+        setFilterData(() => data);
     };
 
     const openUserDataFilter = (title, currFromFilter, currToFilter) => {
@@ -56,8 +56,9 @@ const Filters = () => {
                 isFilterOpen
                     ? <Overlay
                         setIsFilterOpen={setIsFilterOpen}
-                        filter={filter}
                         isServerDataFilter={isServerDataFilter}
+                        filter={filter}
+                        filterData={filterData}
                         filterName={filterName}
                     />
                     : null

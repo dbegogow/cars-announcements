@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 const Overlay = ({
     setIsFilterOpen,
-    filter,
     isServerDataFilter,
+    filter,
+    filterData,
     filterName
 }) => {
     return (
@@ -20,8 +21,10 @@ const Overlay = ({
                     isServerDataFilter
                         ? (
                             <ServerData >
-                                <Item>Mercedes</Item>
-                                <Item>Audi</Item>
+                                {
+                                    filterData?.map(item =>
+                                        <Item id={item.id}>{item.name}</Item>)
+                                }
                             </ServerData>
                         )
                         : (
