@@ -1,32 +1,45 @@
 import styled from 'styled-components';
 
 const Overlay = ({
-    setIsFilterOpen
+    setIsFilterOpen,
+    filter,
+    isServerDataFilter,
+    filterName
 }) => {
     return (
         <div>
             <Container />
-            <Modal height='200px' top='50%'>
+            <Modal
+                height={isServerDataFilter ? '350px' : '200px'}
+                top={isServerDataFilter ? '40%' : '50%'}
+            >
                 <CloseFilterButton onClick={() => setIsFilterOpen(false)}>
                     <i className="fas fa-times"></i>
                 </CloseFilterButton>
-                <ServerData >
-                    <Item>Mercedes</Item>
-                    <Item>Audi</Item>
-                </ServerData>
-                <UserData style={{ display: 'none' }}>
-                    <h2>Filter</h2>
-                    <div>
-                        <form>
-                            <label htmlFor="from">От:</label>
-                            <input id="from" type="text" />
-                            <label htmlFor="to">До:</label>
-                            <input id="to" type="text" />
-                            <button>Филтрирай</button>
-                        </form>
-                        <button>Изчисти</button>
-                    </div>
-                </UserData>
+                {
+                    isServerDataFilter
+                        ? (
+                            <ServerData >
+                                <Item>Mercedes</Item>
+                                <Item>Audi</Item>
+                            </ServerData>
+                        )
+                        : (
+                            <UserData>
+                                <h2>{filterName}</h2>
+                                <div>
+                                    <form>
+                                        <label htmlFor="from">От:</label>
+                                        <input id="from" type="text" />
+                                        <label htmlFor="to">До:</label>
+                                        <input id="to" type="text" />
+                                        <button>Филтрирай</button>
+                                    </form>
+                                    <button>Изчисти</button>
+                                </div>
+                            </UserData>
+                        )
+                }
             </Modal>
         </div>
     );
