@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { getFilterData } from '../services/cars';
 import Overlay from './Overlay';
@@ -11,8 +11,9 @@ const Filters = () => {
     const [filterName, setFilterName] = useState();
     const [data, setData] = useState();
 
-    const [model, setModel] = useState();
     const [brand, setBrand] = useState();
+    const [model, setModel] = useState();
+    const [type, setType] = useState();
     const [fuel, setFuel] = useState();
     const [transmission, setTransmission] = useState();
     const [fromPrice, setFromPrice] = useState(0);
@@ -39,12 +40,18 @@ const Filters = () => {
         setFilter(() => [currFromFilter, currToFilter]);
     };
 
+    const applyFilter = (itemName) => {
+        filter(itemName);
+        setIsFilterOpen(false);
+    };
+
     return (
         <>
             <Container>
                 <Title>Филтрирай</Title>
-                <FilterButton onClick={() => openServerDataFilter('model', setModel)}>Купе</FilterButton>
-                <FilterButton onClick={() => openServerDataFilter('brand', setBrand)}>Марка</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('brands', setBrand)}>Марка</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('model', setModel)}>Модел</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('type', setType)}>Купе</FilterButton>
                 <FilterButton onClick={() => openServerDataFilter('fuel', setFuel)}>Гориво</FilterButton>
                 <FilterButton onClick={() => openServerDataFilter('transmission', setTransmission)}>Скорости</FilterButton>
                 <FilterButton onClick={() => openUserDataFilter('Цена', setFromPrice, setToPerice)}>Цена</FilterButton>
@@ -57,9 +64,9 @@ const Filters = () => {
                     ? <Overlay
                         setIsFilterOpen={setIsFilterOpen}
                         isServerDataFilter={isServerDataFilter}
-                        filter={filter}
                         filterData={filterData}
                         filterName={filterName}
+                        applyFilter={applyFilter}
                     />
                     : null
             }

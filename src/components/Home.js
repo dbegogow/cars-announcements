@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Card from './Card';
 import Filters from './Filters';
 import Cars from './Cars';
 
