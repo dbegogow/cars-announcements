@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../state/index';
 import styled from 'styled-components';
 import { getFilterData } from '../services/cars';
 import Overlay from './Overlay';
@@ -24,6 +27,10 @@ const Filters = () => {
     const [fromPower, setFromPower] = useState(0);
     const [toPower, setToPower] = useState(0);
 
+    const state = useSelector((state) => state.cars);
+    const dispatch = useDispatch();
+    const { addCars } = bindActionCreators(actionCreators, dispatch);
+
     const openServerDataFilter = async (name, currFilter) => {
         setIsFilterOpen(true);
         setIsServerDataFilter(true);
@@ -42,6 +49,7 @@ const Filters = () => {
 
     const applyFilter = (itemName) => {
         filter(itemName);
+
         setIsFilterOpen(false);
     };
 
