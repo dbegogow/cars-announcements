@@ -7,7 +7,7 @@ export const addCars = (cars) => {
     };
 };
 
-export const addFilter = (filter) => {
+export const changeFilter = (filter) => {
     return (dispatch) => {
         dispatch({
             type: filter.key,

@@ -12,10 +12,10 @@ const Overlay = ({
 }) => {
     const filtersState = useSelector((state) => state.filters);
     const dispatch = useDispatch();
-    const { addFilter } = bindActionCreators(actionCreators, dispatch);
+    const { changeFilter } = bindActionCreators(actionCreators, dispatch);
 
     const applyServerDataFilter = (itemName) => {
-        addFilter({ key: filterKey, value: itemName });
+        changeFilter({ key: filterKey, value: itemName });
 
         setIsFilterOpen(false);
     };
@@ -25,8 +25,8 @@ const Overlay = ({
 
         const [fromFilter, toFilter] = filterKey;
 
-        addFilter({ key: fromFilter, value: null });
-        addFilter({ key: toFilter, value: null });
+        changeFilter({ key: fromFilter, value: null });
+        changeFilter({ key: toFilter, value: null });
 
         setIsFilterOpen(false);
     };
@@ -41,8 +41,14 @@ const Overlay = ({
 
         const [fromFilter, toFilter] = filterKey;
 
-        addFilter({ key: fromFilter, value: fromValue });
-        addFilter({ key: toFilter, value: toValue });
+        changeFilter({ key: fromFilter, value: fromValue });
+        changeFilter({ key: toFilter, value: toValue });
+
+        setIsFilterOpen(false);
+    };
+
+    const clearServerFilter = (filterKey) => {
+        changeFilter({ key: filterKey, value: null })
 
         setIsFilterOpen(false);
     };
@@ -61,9 +67,7 @@ const Overlay = ({
                     isServerDataFilter
                         ? (
                             <ServerData >
-                                <ClearFilterButton>
-                                    Изчисти
-                                </ClearFilterButton>
+                                <ClearFilterButton onClick={() => clearServerFilter(filterKey)}>Изчисти</ClearFilterButton>
                                 {
                                     filterData?.map(item =>
                                         <Item
