@@ -13,10 +13,10 @@ const Overlay = ({
     const dispatch = useDispatch();
     const { addFilter } = bindActionCreators(actionCreators, dispatch);
 
-    const applyFilter = (itemName) => {
-        setIsFilterOpen(false);
+    const applyServerDataFilter = (itemName) => {
+        addFilter({ key: filterKey, value: itemName });
 
-        addFilter({ key: filterKey, value: itemName })
+        setIsFilterOpen(false);
     };
 
     const clearUserDataForm = (e) => {
@@ -26,6 +26,22 @@ const Overlay = ({
 
         addFilter({ key: fromFilter, value: null });
         addFilter({ key: toFilter, value: null });
+
+        setIsFilterOpen(false);
+    };
+
+    const applyUserDataFilter = (e) => {
+        e.preventDefault();
+
+        const target = e.target;
+
+        const fromValue = target.from.value;
+        const toValue = target.to.value;
+
+        const [fromFilter, toFilter] = filterKey;
+
+        addFilter({ key: fromFilter, value: fromValue });
+        addFilter({ key: toFilter, value: toValue });
 
         setIsFilterOpen(false);
     };
@@ -48,7 +64,7 @@ const Overlay = ({
                                     filterData?.map(item =>
                                         <Item
                                             key={item.id}
-                                            onClick={() => applyFilter(item.name)}
+                                            onClick={() => applyServerDataFilter(item.name)}
                                         >
                                             {item.name}
                                         </Item>)
@@ -59,7 +75,7 @@ const Overlay = ({
                             <UserData>
                                 <h2>{filterName}</h2>
                                 <div>
-                                    <form>
+                                    <form onSubmit={applyUserDataFilter}>
                                         <label htmlFor="from">От:</label>
                                         <input id="from" name="from" type="text" />
                                         <label htmlFor="to">До:</label>
