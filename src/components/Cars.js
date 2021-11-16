@@ -1,10 +1,24 @@
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Card from './Card';
 
 const Cars = () => {
+    const state = useSelector((state) => state.cars);
+
     return (
         <Container>
-            <Card />
+            {
+                state?.map(c =>
+                    <Card
+                        key={c.id}
+                        brand={c.brandName}
+                        model={c.modelName}
+                        fuel={c.fuelName}
+                        price={c.price}
+                        year={c.year}
+                    />
+                )
+            }
         </Container>
     );
 };

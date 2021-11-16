@@ -6,3 +6,12 @@ export const addCars = (cars) => {
         });
     };
 };
+
+export const addFilter = (filter) => {
+    return (dispatch) => {
+        dispatch({
+            type: filter.key,
+            filter: filter.value
+        });
+    };
+};

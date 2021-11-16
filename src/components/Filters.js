@@ -1,80 +1,87 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../state/index';
+import { actionCreators } from '../state';
 import styled from 'styled-components';
-import { getFilterData } from '../services/cars';
+import { getAllCars, getFilterData } from '../services/cars';
 import Overlay from './Overlay';
 
 const Filters = () => {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [isServerDataFilter, setIsServerDataFilter] = useState(false);
-    const [filter, setFilter] = useState();
+    const [filterKey, setFilterKey] = useState();
     const [filterData, setFilterData] = useState();
     const [filterName, setFilterName] = useState();
-    const [data, setData] = useState();
 
-    const [brand, setBrand] = useState();
-    const [model, setModel] = useState();
-    const [type, setType] = useState();
-    const [fuel, setFuel] = useState();
-    const [transmission, setTransmission] = useState();
-    const [fromPrice, setFromPrice] = useState(0);
-    const [toPrice, setToPerice] = useState(0);
-    const [fromYear, setFromYear] = useState(0);
-    const [toYear, setToYear] = useState(0);
-    const [doors, setDoors] = useState(0);
-    const [fromPower, setFromPower] = useState(0);
-    const [toPower, setToPower] = useState(0);
-
-    const state = useSelector((state) => state.cars);
     const dispatch = useDispatch();
     const { addCars } = bindActionCreators(actionCreators, dispatch);
 
-    const openServerDataFilter = async (name, currFilter) => {
+    const openServerDataFilter = async (filter) => {
         setIsFilterOpen(true);
         setIsServerDataFilter(true);
-        setFilter(() => currFilter);
 
-        const data = await getFilterData(name);
+        setFilterKey(() => filter);
+
+        const data = await getFilterData(`${filter}s`);
         setFilterData(() => data);
     };
 
-    const openUserDataFilter = (title, currFromFilter, currToFilter) => {
+    const openUserDataFilter = (title, fromFilter, toFilter) => {
         setIsFilterOpen(true);
         setIsServerDataFilter(false);
+
         setFilterName(title);
-        setFilter(() => [currFromFilter, currToFilter]);
+
+        setFilterKey(() => [fromFilter, toFilter]);
     };
 
-    const applyFilter = (itemName) => {
-        filter(itemName);
+    const filtersState = useSelector((state) => state.filters);
 
-        setIsFilterOpen(false);
-    };
+    useEffect(() => {
+        (
+            async () => {
+                const carsData = await getAllCars(
+                    filtersState.brand,
+                    filtersState.model,
+                    filtersState.type,
+                    filtersState.fuel,
+                    filtersState.transmission,
+                    filtersState.fromPrice,
+                    filtersState.toPrice,
+                    filtersState.fromYear,
+                    filtersState.toYear,
+                    filtersState.doors,
+                    filtersState.fromHorsepower,
+                    filtersState.toHorsepower
+                );
+
+                addCars(carsData);
+            }
+        )();
+    });
 
     return (
         <>
             <Container>
                 <Title>Филтрирай</Title>
-                <FilterButton onClick={() => openServerDataFilter('brands', setBrand)}>Марка</FilterButton>
-                <FilterButton onClick={() => openServerDataFilter('model', setModel)}>Модел</FilterButton>
-                <FilterButton onClick={() => openServerDataFilter('type', setType)}>Купе</FilterButton>
-                <FilterButton onClick={() => openServerDataFilter('fuel', setFuel)}>Гориво</FilterButton>
-                <FilterButton onClick={() => openServerDataFilter('transmission', setTransmission)}>Скорости</FilterButton>
-                <FilterButton onClick={() => openUserDataFilter('Цена', setFromPrice, setToPerice)}>Цена</FilterButton>
-                <FilterButton onClick={() => openUserDataFilter('Година', setFromYear, setToYear)}>Година</FilterButton>
-                <FilterButton onClick={() => openServerDataFilter('doors', setDoors)}>Брой врати</FilterButton>
-                <FilterButton onClick={() => openUserDataFilter('Мощност', setFromPower, setToPower)}>Мощност</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('brand')}>Марка</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('model')}>Модел</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('type')}>Купе</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('fuel')}>Гориво</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('transmission')}>Скорости</FilterButton>
+                <FilterButton onClick={() => openUserDataFilter('Цена', 'fromPrice', 'toPrice')}>Цена</FilterButton>
+                <FilterButton onClick={() => openUserDataFilter('Година', 'fromYear', 'toYear')}>Година</FilterButton>
+                <FilterButton onClick={() => openServerDataFilter('doors')}>Брой врати</FilterButton>
+                <FilterButton onClick={() => openUserDataFilter('Мощност', 'fromHorsepower', 'toHorsepower')}>Мощност</FilterButton>
             </Container>
             {
                 isFilterOpen
                     ? <Overlay
                         setIsFilterOpen={setIsFilterOpen}
                         isServerDataFilter={isServerDataFilter}
+                        filterKey={filterKey}
                         filterData={filterData}
                         filterName={filterName}
-                        applyFilter={applyFilter}
                     />
                     : null
             }

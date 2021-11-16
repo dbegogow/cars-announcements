@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Card = () => {
+const Card = ({
+    brand,
+    model,
+    fuel,
+    price,
+    year,
+}) => {
     return (
         <Container to={`/car`}>
             <DateContainer>
@@ -11,9 +17,9 @@ const Card = () => {
                 <i className="far fa-heart"></i>
             </DateContainer>
             <Image src="https://i.ytimg.com/vi/6kevcDye9Bw/maxresdefault.jpg" alt="car" />
-            <Price>10.500лв.</Price>
-            <Model>BMW X3 2.0d Other somethig text</Model>
-            <Specifications>2006, Дизел, 200000 км.</Specifications>
+            <Price>{price}лв.</Price>
+            <Model>{brand} - {model}</Model>
+            <Specifications>{year}, {fuel}, 200000 км.</Specifications>
             <Description>Регистрирана, нов внос</Description>
             <Location>частно лице, Враца</Location>
         </Container>

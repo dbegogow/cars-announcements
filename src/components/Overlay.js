@@ -1,12 +1,24 @@
+import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { actionCreators } from '../state';
 
 const Overlay = ({
     setIsFilterOpen,
     isServerDataFilter,
+    filterKey,
     filterData,
     filterName,
-    applyFilter
 }) => {
+    const dispatch = useDispatch();
+    const { addFilter } = bindActionCreators(actionCreators, dispatch);
+
+    const applyFilter = (itemName) => {
+        setIsFilterOpen(false);
+
+        addFilter({ key: filterKey, value: itemName })
+    };
+
     return (
         <div>
             <Container />
@@ -42,8 +54,8 @@ const Overlay = ({
                                         <label htmlFor="to">До:</label>
                                         <input id="to" type="text" />
                                         <button>Филтрирай</button>
+                                        <button>Изчисти</button>
                                     </form>
-                                    <button>Изчисти</button>
                                 </div>
                             </UserData>
                         )
