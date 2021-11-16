@@ -1,5 +1,5 @@
 import { bindActionCreators } from 'redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { actionCreators } from '../state';
 
@@ -10,6 +10,7 @@ const Overlay = ({
     filterData,
     filterName,
 }) => {
+    const filtersState = useSelector((state) => state.filters);
     const dispatch = useDispatch();
     const { addFilter } = bindActionCreators(actionCreators, dispatch);
 
@@ -65,6 +66,10 @@ const Overlay = ({
                                         <Item
                                             key={item.id}
                                             onClick={() => applyServerDataFilter(item.name)}
+                                            style={{
+                                                pointerEvents: filtersState[filterKey] === item.name ? 'none' : '',
+                                                background: filtersState[filterKey] === item.name ? '#B6B6B6' : ''
+                                            }}
                                         >
                                             {item.name}
                                         </Item>)

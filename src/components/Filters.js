@@ -60,8 +60,6 @@ const Filters = () => {
         )();
     });
 
-    console.log(filtersState);
-
     return (
         <>
             <Container>
