@@ -36,8 +36,20 @@ const Overlay = ({
 
         const target = e.target;
 
-        const fromValue = target.from.value;
-        const toValue = target.to.value;
+        let fromValue = target.from.value;
+        let toValue = target.to.value;
+
+        try {
+            fromValue = parseInt(fromValue);
+        } catch (err) {
+            fromValue = null;
+        }
+
+        try {
+            toValue = parseInt(toValue);
+        } catch (err) {
+            toValue = null;
+        }
 
         const [fromFilter, toFilter] = filterKey;
 
