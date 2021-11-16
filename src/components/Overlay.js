@@ -61,6 +61,9 @@ const Overlay = ({
                     isServerDataFilter
                         ? (
                             <ServerData >
+                                <ClearFilterButton>
+                                    Изчисти
+                                </ClearFilterButton>
                                 {
                                     filterData?.map(item =>
                                         <Item
@@ -140,6 +143,18 @@ const CloseFilterButton = styled.button`
     background: none;
     border: none;
     font-size: 1.2rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+const ClearFilterButton = styled.button`
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    border-radius: 7px;
+    border: 2px solid #6C6C6C;
 
     &:hover {
         cursor: pointer;
