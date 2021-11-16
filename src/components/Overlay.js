@@ -19,6 +19,17 @@ const Overlay = ({
         addFilter({ key: filterKey, value: itemName })
     };
 
+    const clearUserDataForm = (e) => {
+        e.preventDefault();
+
+        const [fromFilter, toFilter] = filterKey;
+
+        addFilter({ key: fromFilter, value: null });
+        addFilter({ key: toFilter, value: null });
+
+        setIsFilterOpen(false);
+    };
+
     return (
         <div>
             <Container />
@@ -50,12 +61,12 @@ const Overlay = ({
                                 <div>
                                     <form>
                                         <label htmlFor="from">От:</label>
-                                        <input id="from" type="text" />
+                                        <input id="from" name="from" type="text" />
                                         <label htmlFor="to">До:</label>
                                         <input id="to" type="text" />
                                         <button>Филтрирай</button>
-                                        <button>Изчисти</button>
                                     </form>
+                                    <button onClick={clearUserDataForm}>Изчисти</button>
                                 </div>
                             </UserData>
                         )
