@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -31,13 +32,26 @@ const Overlay = ({
         setIsFilterOpen(false);
     };
 
+    let [fromValue, setFromValue] = useState('');
+    let [toValue, setToValue] = useState('');
+
+    const changeFromValue = (e) => {
+        setFromValue(e.target.value);
+        
+    };
+
+    const changeToValue = (e) => {
+        setToValue(e.target.value);
+
+        try {
+            fromValue = parseInt(fromValue);
+        } catch (err) {
+            fromValue = null;
+        }
+    };
+
     const applyUserDataFilter = (e) => {
         e.preventDefault();
-
-        const target = e.target;
-
-        let fromValue = target.from.value;
-        let toValue = target.to.value;
 
         try {
             fromValue = parseInt(fromValue);
@@ -101,9 +115,21 @@ const Overlay = ({
                                 <div>
                                     <form onSubmit={applyUserDataFilter}>
                                         <label htmlFor="from">От:</label>
-                                        <input id="from" name="from" type="text" />
+                                        <input
+                                            id="from"
+                                            name="from"
+                                            type="text"
+                                            onChange={changeFromValue}
+                                            value={fromValue}
+                                        />
                                         <label htmlFor="to">До:</label>
-                                        <input id="to" type="text" />
+                                        <input
+                                            id="to"
+                                            name="to"
+                                            type="text"
+                                            onChange={changeToValue}
+                                            value={toValue}
+                                        />
                                         <button>Филтрирай</button>
                                     </form>
                                     <button onClick={clearUserDataForm}>Изчисти</button>
