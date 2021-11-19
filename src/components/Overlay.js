@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -32,26 +31,11 @@ const Overlay = ({
         setIsFilterOpen(false);
     };
 
-    let [fromValue, setFromValue] = useState('');
-    let [toValue, setToValue] = useState('');
-
-    const changeFromValue = (e) => {
-        setFromValue(e.target.value);
-        
-    };
-
-    const changeToValue = (e) => {
-        setToValue(e.target.value);
-
-        try {
-            fromValue = parseInt(fromValue);
-        } catch (err) {
-            fromValue = null;
-        }
-    };
-
     const applyUserDataFilter = (e) => {
         e.preventDefault();
+
+        let fromValue = e.target.from.value;
+        let toValue = e.target.to.value;
 
         try {
             fromValue = parseInt(fromValue);
@@ -119,16 +103,18 @@ const Overlay = ({
                                             id="from"
                                             name="from"
                                             type="text"
-                                            onChange={changeFromValue}
-                                            value={fromValue}
+                                            defaultValue={filtersState[filterKey[0]]
+                                                ? `${filtersState[filterKey[0]]} лв.`
+                                                : ''}
                                         />
                                         <label htmlFor="to">До:</label>
                                         <input
                                             id="to"
                                             name="to"
                                             type="text"
-                                            onChange={changeToValue}
-                                            value={toValue}
+                                            defaultValue={filtersState[filterKey[1]]
+                                                ? `${filtersState[filterKey[1]]} лв.`
+                                                : ''}
                                         />
                                         <button>Филтрирай</button>
                                     </form>
