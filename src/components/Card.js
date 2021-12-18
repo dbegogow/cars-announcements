@@ -9,7 +9,7 @@ const Card = ({
     year,
 }) => {
     return (
-        <Container to={`/car`}>
+        <Container to={"/car"}>
             <DateContainer>
                 <div>
                     02.07.2021

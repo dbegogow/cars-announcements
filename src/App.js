@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
+import Car from './components/Car';
 import LoginForm from './components/Forms/LoginForm';
 import RegisterForm from './components/Forms/RegisterForm';
 
@@ -10,6 +11,7 @@ const App = () => {
             <Header />
             <Switch>
                 <Route exact path="/" component={Home} />
+                <Route path="/car" component={Car} />
                 <Route path="/login" component={LoginForm} />
                 <Route path="/register" component={RegisterForm} />
             </Switch>
